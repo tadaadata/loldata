@@ -1,0 +1,10 @@
+Package: loldata
+Title: Data for the lulz
+Version: 0.1.0
+Authors@R: person('Lukas', 'Burk', email = 'jemus42@quantenbrot.com', role = c('aut', 'cre'))
+Description: Miscellaneous data provided for the lulz.
+Depends:
+    R (>= 3.2.2)
+License: MIT + file LICENSE
+LazyData: true
+RoxygenNote: 5.0.1
