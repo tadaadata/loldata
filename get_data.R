@@ -74,9 +74,21 @@ names(discrimination) <- c("country", "discrimination_index")
 discrimination <- discrimination %>%
                     mutate(country = str_trim(country, "both"))
 
+## Homicide ##
+homicide <- read_html("https://en.wikipedia.org/wiki/List_of_countries_by_intentional_homicide_rate") %>%
+             html_table(fill = TRUE) %>% extract2(4)
+homicide <- homicide[c(-1, -2), ]
+
+names(homicide) <- c("country", "homicide_rate", "homicide_couunt", "region", "subregion", "year")
+homicide <- homicide %>% select(country, homicide_rate, region, subregion) %>%
+            mutate(homicide_rate = as.numeric(homicide_rate),
+                   country = str_trim(country, "both"))
+
 ## Combining ##
 worldrankings <- full_join(smartphones, happiness) %>%
                  full_join(literacy) %>%
                  full_join(discrimination) %>%
-                 tbl_df
+                 full_join(homicide) %>%
+                 tbl_df %>%
+                 select(country, subregion, region, everything())
 use_data(worldrankings, overwrite = TRUE)
