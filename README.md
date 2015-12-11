@@ -25,5 +25,7 @@ devtools::install_github("tadaadata/loldata")
     * `literacy`: [Literacy rate](https://en.wikipedia.org/wiki/List_of_countries_by_literacy_rate)
     * `happiness`: [Happiness](https://en.wikipedia.org/wiki/World_Happiness_Report)
     * `smartphone_adoption`: [Smartphone penetration](https://en.wikipedia.org/wiki/List_of_countries_by_literacy_rate)
+    * `discrimination_index`: [Discrimination Index](https://en.wikipedia.org/wiki/List_of_countries_by_discrimination_and_violence_against_minorities)
+    * `homicide_rate`: [Homicide rate](https://en.wikipedia.org/wiki/List_of_countries_by_intentional_homicide_rate)
 
 
