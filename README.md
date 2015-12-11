@@ -21,3 +21,9 @@ devtools::install_github("tadaadata/loldata")
 * `gameofthrones`: Game of Thrones episode data from [trakt.tv](https://trakt.tv) via the [tRakt package](https://github.com/jemus42/tRakt)
 * `popularshows`: Popular show data from [trakt.tv](https://trakt.tv) via the [tRakt package](https://github.com/jemus42/tRakt)
 * `popularmovies`: Popular movie data from [trakt.tv](https://trakt.tv) via the [tRakt package](https://github.com/jemus42/tRakt)
+* `worldrankings`: Various world rankings taken from Wikipedia combined in one dataset:
+    * `literacy`: [Literacy rate](https://en.wikipedia.org/wiki/List_of_countries_by_literacy_rate)
+    * `happiness`: [Happiness](https://en.wikipedia.org/wiki/World_Happiness_Report)
+    * `smartphone_adoption`: [Smartphone penetration](https://en.wikipedia.org/wiki/List_of_countries_by_literacy_rate)
+
+
