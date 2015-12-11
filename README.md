@@ -1,6 +1,7 @@
 # loldata
 
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/loldata)](http://cran.r-project.org/package=loldata)
+[![Project Status: Active - The project has reached a stable, usable state and is being actively developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
 
 Miscellaneous datasets provided for the lulz
 
