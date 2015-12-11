@@ -1,10 +1,10 @@
-#' @name popularshows
-#' @title Overview of popular shows on \code{trakt.tv}
-#' @description A table of 100 shows popular on \url{https://trakt.tv}
+#' @name popularmovies
+#' @title Overview of popular movies on \code{trakt.tv}
+#' @description A table of 100 movies popular on \url{https://trakt.tv}
 #' @docType data
 #' @keywords dataset
-#' @usage popularshows
+#' @usage popularmovies
 #' @note Last updated on 2015-12-11
 #' @format A \code{data.frame} containing numerical and factor data.
 #' @source \url{https://trakt.tv} via the \code{tRakt} package.
-"popularshows"
+"popularmovies"

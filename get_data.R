@@ -14,5 +14,12 @@ use_data(gameofthrones, overwrite = TRUE)
 
 #### Popular shows ####
 
-popularshows <- trakt.shows.popular(100)
+popularshows <- trakt.shows.popular(100, extended = "full") %>%
+                  select(-available_translations)
 use_data(popularshows, overwrite = TRUE)
+
+#### Popular movies ####
+
+popularmovies <- trakt.movies.popular(100, extended = "full") %>%
+                   select(-available_translations)
+use_data(popularmovies, overwrite = TRUE)
