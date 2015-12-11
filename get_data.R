@@ -66,6 +66,17 @@ smartphones <- smartphones %>%
                mutate(country = str_trim(country, "both"),
                smartphone_adoption = as.numeric(str_sub(smartphone_adoption, 1, 4)))
 
+## Discrimination index ##
+discrimination <- read_html("https://en.wikipedia.org/wiki/List_of_countries_by_discrimination_and_violence_against_minorities") %>%
+                   html_table(fill = TRUE) %>%
+                   extract2(1) %>% select(-1)
+names(discrimination) <- c("country", "discrimination_index")
+discrimination <- discrimination %>%
+                    mutate(country = str_trim(country, "both"))
+
 ## Combining ##
-worldrankings <- tbl_df(full_join(full_join(smartphones, happiness), literacy))
+worldrankings <- full_join(smartphones, happiness) %>%
+                 full_join(literacy) %>%
+                 full_join(discrimination) %>%
+                 tbl_df
 use_data(worldrankings, overwrite = TRUE)

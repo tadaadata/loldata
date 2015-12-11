@@ -5,6 +5,7 @@
 #' \item Literacy rate \url{https://en.wikipedia.org/wiki/List_of_countries_by_literacy_rate}
 #' \item Happiness \url{https://en.wikipedia.org/wiki/World_Happiness_Report}
 #' \item Smartphone penetration \url{https://en.wikipedia.org/wiki/List_of_countries_by_literacy_rate}
+#' \item Discrimination \url{https://en.wikipedia.org/wiki/List_of_countries_by_discrimination_and_violence_against_minorities}
 #' }
 #' @docType data
 #' @keywords dataset
