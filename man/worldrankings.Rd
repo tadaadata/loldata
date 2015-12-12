@@ -19,6 +19,8 @@ A table of various world rankings
 \item Smartphone penetration \url{https://en.wikipedia.org/wiki/List_of_countries_by_smartphone_penetration}
 \item Discrimination \url{https://en.wikipedia.org/wiki/List_of_countries_by_discrimination_and_violence_against_minorities}
 \item Homicide \url{https://en.wikipedia.org/wiki/List_of_countries_by_intentional_homicide_rate}
+\item Education (most recent value) \url{https://en.wikipedia.org/wiki/Education_Index}
+\item Disposable income \url{https://en.wikipedia.org/wiki/List_of_countries_by_average_wage}
 }
 }
 \note{
