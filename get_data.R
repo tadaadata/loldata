@@ -26,7 +26,6 @@ gameofthrones <- trakt.get_all_episodes("game-of-thrones") %>%
 use_data(gameofthrones, overwrite = TRUE)
 
 #### Popular shows ####
-
 popularshows <- trakt.shows.popular(100, extended = "full") %>%
                   select(-available_translations)
 airs         <- popularshows$airs
@@ -36,7 +35,6 @@ popularshows <- popularshows %>% select(-airs) %>% bind_cols(airs) %>% tbl_df
 use_data(popularshows, overwrite = TRUE)
 
 #### Popular movies ####
-
 popularmovies <- trakt.movies.popular(100, extended = "full") %>%
                    select(-available_translations) %>%
                    tbl_df()
@@ -103,7 +101,7 @@ education <- read_html("https://en.wikipedia.org/wiki/Education_Index") %>%
 income <- read_html("https://en.wikipedia.org/wiki/List_of_countries_by_average_wage") %>%
             html_table(fill = TRUE) %>%
             extract2(3) %>%
-            select (1, 2) %>%
+            select(1, 2) %>%
             set_colnames(c("country", "income")) %>%
             mutate(income = as.numeric(str_replace(income, ",", "")),
                    country = str_trim(country, "both"))
