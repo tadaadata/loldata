@@ -27,5 +27,7 @@ devtools::install_github("tadaadata/loldata")
     * `smartphone_adoption`: [Smartphone penetration](https://en.wikipedia.org/wiki/List_of_countries_by_smartphone_penetration)
     * `discrimination_index`: [Discrimination Index](https://en.wikipedia.org/wiki/List_of_countries_by_discrimination_and_violence_against_minorities)
     * `homicide_rate`: [Homicide rate](https://en.wikipedia.org/wiki/List_of_countries_by_intentional_homicide_rate)
+    * `education`: [Education index (most recent value)](https://en.wikipedia.org/wiki/Education_Index)
+    * `income`: [Disposable income](https://en.wikipedia.org/wiki/List_of_countries_by_average_wage)
 
 
