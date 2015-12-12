@@ -61,7 +61,6 @@ literacy <- read_html("https://en.wikipedia.org/wiki/List_of_countries_by_litera
             extract2(1)
 literacy <- literacy[c(1, 2)] %>% slice(-1)
 names(literacy) <- c("country", "literacy")
-
 literacy <- literacy %>%
               mutate(literacy = gsub("not reported by UNESCO 2015", NA, literacy),
               literacy = as.numeric(str_extract(literacy, "^.{4}")),
@@ -88,17 +87,25 @@ discrimination <- discrimination %>%
 homicide <- read_html("https://en.wikipedia.org/wiki/List_of_countries_by_intentional_homicide_rate") %>%
              html_table(fill = TRUE) %>% extract2(4)
 homicide <- homicide[c(-1, -2), ]
-
-names(homicide) <- c("country", "homicide_rate", "homicide_couunt", "region", "subregion", "year")
+names(homicide) <- c("country", "homicide_rate", "homicide_count", "region", "subregion", "year")
 homicide <- homicide %>% select(country, homicide_rate, region, subregion) %>%
             mutate(homicide_rate = as.numeric(homicide_rate),
                    country = str_trim(country, "both"))
+
+## Education ##
+education <- read_html("https://en.wikipedia.org/wiki/Education_Index") %>%
+               html_table(fill = TRUE) %>% extract2(1)
+education <- education[-1, c(1, (ncol(education) - 1))]
+names(education) <- c("country", "education")
+education <- education %>%
+              mutate(country = str_trim(country, "both"))
 
 ## Combining ##
 worldrankings <- full_join(smartphones, happiness) %>%
                  full_join(literacy) %>%
                  full_join(discrimination) %>%
                  full_join(homicide) %>%
+                 full_join(education) %>%
                  tbl_df %>%
                  select(country, subregion, region, everything())
 use_data(worldrankings, overwrite = TRUE)
