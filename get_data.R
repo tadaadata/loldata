@@ -106,6 +106,13 @@ income <- read_html("https://en.wikipedia.org/wiki/List_of_countries_by_average_
             mutate(income = as.numeric(str_replace(income, ",", "")),
                    country = str_trim(country, "both"))
 
+## Gini Index ##
+gini <- read_html("https://en.wikipedia.org/wiki/List_of_countries_by_income_equality") %>%
+          html_table(fill = TRUE) %>% extract2(4) %>% extract(c(-1, -2), c(1, 4)) %>%
+          set_colnames(c("country", "gini")) %>%
+          mutate(gini = as.numeric(gini),
+                 country = str_trim(country, "both"))
+
 ## Combining ##
 worldrankings <- full_join(smartphones, happiness) %>%
                  full_join(literacy) %>%
@@ -113,6 +120,7 @@ worldrankings <- full_join(smartphones, happiness) %>%
                  full_join(homicide) %>%
                  full_join(education) %>%
                  full_join(income) %>%
+                 full_join(gini) %>%
                  tbl_df %>%
                  select(country, subregion, region, everything())
 use_data(worldrankings, overwrite = TRUE)

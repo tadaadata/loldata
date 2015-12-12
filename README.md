@@ -29,5 +29,4 @@ devtools::install_github("tadaadata/loldata")
     * `homicide_rate`: [Homicide rate](https://en.wikipedia.org/wiki/List_of_countries_by_intentional_homicide_rate)
     * `education`: [Education index (most recent value)](https://en.wikipedia.org/wiki/Education_Index)
     * `income`: [Disposable income](https://en.wikipedia.org/wiki/List_of_countries_by_average_wage)
-
-
+    * `gini`: [World Bank Gini index (income inequality)](https://en.wikipedia.org/wiki/List_of_countries_by_income_equality)
