@@ -6,6 +6,14 @@ library(magrittr)
 #### penis ####
 # Site broke my script :(
 
+penis <- readRDS("inst/extdata/penis.rds")
+penis <- penis %>% rename(country = Country,
+                          region  = Region,
+                          method  = Method,
+                          n       = N) %>%
+                   select(-ends_with("_in"), -Source) %>%
+                   tbl_df
+
 #### Game of Thrones ####
 library(tRakt)
 
