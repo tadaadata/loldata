@@ -14,6 +14,8 @@ penis <- penis %>% rename(country = Country,
                    select(-ends_with("_in"), -Source) %>%
                    tbl_df
 
+use_data(penis, overwrite = TRUE)
+
 #### Game of Thrones ####
 library(tRakt)
 
