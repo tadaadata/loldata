@@ -132,6 +132,16 @@ suicide <- bind_rows(suicideA, suicideB) %>%
              mutate(country = str_replace_all(country, "\\(more info\\)", ""),
                     country = str_trim(country, "both"))
 
+## Gun related deaths ##
+guns <- read_html("https://en.wikipedia.org/wiki/List_of_countries_by_firearm-related_death_rate") %>%
+          html_table(fill = TRUE) %>% extract2(1) %>%
+          select(1, 2) %>%
+          set_colnames(c("country", "gun_deaths")) %>%
+          filter(country != "Country") %>%
+          mutate(country = str_replace_all(country, "^.*!", ""),
+                 country = str_trim(country, "both"),
+                 gun_deaths = as.numeric(gun_deaths))
+
 ## Combining ##
 worldrankings <- full_join(smartphones, happiness) %>%
                  full_join(literacy) %>%
@@ -141,6 +151,7 @@ worldrankings <- full_join(smartphones, happiness) %>%
                  full_join(income) %>%
                  full_join(gini) %>%
                  full_join(suicide) %>%
+                 full_join(guns) %>%
                  tbl_df %>%
                  select(country, subregion, region, everything()) %>%
                  filter(!str_detect(country, "World"))

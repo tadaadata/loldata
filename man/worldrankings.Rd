@@ -22,6 +22,8 @@ A table of various world rankings
 \item Education (most recent value) \url{https://en.wikipedia.org/wiki/Education_Index}
 \item Disposable income \url{https://en.wikipedia.org/wiki/List_of_countries_by_average_wage}
 \item World Bank Gini index \url{https://en.wikipedia.org/wiki/List_of_countries_by_income_equality}
+\item Suicide rate \url{https://en.wikipedia.org/wiki/List_of_countries_by_suicide_rate}
+\item Gun related death rate (total) \url{https://en.wikipedia.org/wiki/List_of_countries_by_firearm-related_death_rate}
 }
 }
 \note{
