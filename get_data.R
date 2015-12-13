@@ -47,7 +47,7 @@ library(stringr)
 
 ## Happiness ##
 happiness <- read_html("https://en.wikipedia.org/wiki/World_Happiness_Report") %>%
-             html_table(fill = TRUE) %>%
+             html_table(fill = TRUE, trim = TRUE) %>%
              extract2(1) %>%
              select(Country, Happiness) %>%
              mutate(Country = str_trim(Country, "both")) %>%
@@ -55,7 +55,7 @@ happiness <- read_html("https://en.wikipedia.org/wiki/World_Happiness_Report") %
 
 ## Literacy ##
 literacy <- read_html("https://en.wikipedia.org/wiki/List_of_countries_by_literacy_rate") %>%
-              html_table(fill = TRUE) %>%
+              html_table(fill = TRUE, trim = TRUE) %>%
               extract2(1) %>%
               extract(-1, c(1, 2)) %>%
               set_colnames(c("country", "literacy")) %>%
@@ -66,7 +66,7 @@ literacy <- read_html("https://en.wikipedia.org/wiki/List_of_countries_by_litera
 
 ## Smartphone adoption ##
 smartphones <- read_html("https://en.wikipedia.org/wiki/List_of_countries_by_smartphone_penetration") %>%
-                 html_table(fill = TRUE) %>%
+                 html_table(fill = TRUE, trim = TRUE) %>%
                  extract2(1) %>%
                  select(-1) %>%
                  set_colnames(c("country", "smartphone_adoption")) %>%
@@ -75,14 +75,14 @@ smartphones <- read_html("https://en.wikipedia.org/wiki/List_of_countries_by_sma
 
 ## Discrimination index ##
 discrimination <- read_html("https://en.wikipedia.org/wiki/List_of_countries_by_discrimination_and_violence_against_minorities") %>%
-                    html_table(fill = TRUE) %>%
+                    html_table(fill = TRUE, trim = TRUE) %>%
                     extract2(1) %>% select(-1) %>%
                     set_colnames(c("country", "discrimination_index")) %>%
                     mutate(country = str_trim(country, "both"))
 
 ## Homicide ##
 homicide <- read_html("https://en.wikipedia.org/wiki/List_of_countries_by_intentional_homicide_rate") %>%
-              html_table(fill = TRUE) %>%
+              html_table(fill = TRUE, trim = TRUE) %>%
               extract2(4) %>%
               extract(c(-1, -2), ) %>%
               set_colnames(c("country", "homicide_rate", "homicide_count", "region", "subregion", "year")) %>%
@@ -92,14 +92,14 @@ homicide <- read_html("https://en.wikipedia.org/wiki/List_of_countries_by_intent
 
 ## Education ##
 education <- read_html("https://en.wikipedia.org/wiki/Education_Index") %>%
-               html_table(fill = TRUE) %>% extract2(1) %>%
+               html_table(fill = TRUE, trim = TRUE) %>% extract2(1) %>%
                extract(-1, c(1, (ncol(.) - 1))) %>%
                set_colnames(c("country", "education")) %>%
                mutate(country = str_trim(country, "both"))
 
 ## Income ##
 income <- read_html("https://en.wikipedia.org/wiki/List_of_countries_by_average_wage") %>%
-            html_table(fill = TRUE) %>%
+            html_table(fill = TRUE, trim = TRUE) %>%
             extract2(3) %>%
             select(1, 2) %>%
             set_colnames(c("country", "income")) %>%
@@ -108,10 +108,29 @@ income <- read_html("https://en.wikipedia.org/wiki/List_of_countries_by_average_
 
 ## Gini Index ##
 gini <- read_html("https://en.wikipedia.org/wiki/List_of_countries_by_income_equality") %>%
-          html_table(fill = TRUE) %>% extract2(4) %>% extract(c(-1, -2), c(1, 4)) %>%
+          html_table(fill = TRUE, trim = TRUE) %>% extract2(4) %>% extract(c(-1, -2), c(1, 4)) %>%
           set_colnames(c("country", "gini")) %>%
           mutate(gini = as.numeric(gini),
                  country = str_trim(country, "both"))
+
+## Suicide rate ##
+suicide <- read_html("https://en.wikipedia.org/wiki/List_of_countries_by_suicide_rate") %>%
+             html_table(fill = TRUE) %>%
+             extract2(2) %>%
+             select(1:3) %>%
+             set_colnames(c("rank", "country", "suicide_rate"))
+
+suicideA <- suicide %>% filter(str_detect(rank, "^\\w")) %>%
+              select(-1)
+
+suicideB <- suicide %>% filter(!(str_detect(rank, "^\\w"))) %>%
+              select(-3) %>%
+              set_colnames(c("country", "suicide_rate")) %>%
+              mutate(suicide_rate = as.numeric(suicide_rate))
+
+suicide <- bind_rows(suicideA, suicideB) %>%
+             mutate(country = str_replace_all(country, "\\(more info\\)", ""),
+                    country = str_trim(country, "both"))
 
 ## Combining ##
 worldrankings <- full_join(smartphones, happiness) %>%
@@ -121,6 +140,8 @@ worldrankings <- full_join(smartphones, happiness) %>%
                  full_join(education) %>%
                  full_join(income) %>%
                  full_join(gini) %>%
+                 full_join(suicide) %>%
                  tbl_df %>%
-                 select(country, subregion, region, everything())
+                 select(country, subregion, region, everything()) %>%
+                 filter(!str_detect(country, "World"))
 use_data(worldrankings, overwrite = TRUE)
