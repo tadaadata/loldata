@@ -1,5 +1,5 @@
 ^get_data\.R$
 ^.*\.Rproj$
 ^\.Rproj\.user$
-^R/playground\.R$
+playground.R
 ^inst/extdata/penis\.rds$
