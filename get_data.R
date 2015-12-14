@@ -144,18 +144,26 @@ guns <- read_html("https://en.wikipedia.org/wiki/List_of_countries_by_firearm-re
 
 ## Internet speed ##
 internet <- read_html("https://en.wikipedia.org/wiki/List_of_countries_by_Internet_connection_speeds") %>%
-            html_table(fill = TRUE, trim = TRUE) %>%
-            extract2(1) %>%
-            set_colnames(c("rank", "country", "internet_speed")) %>%
-            select(-rank) %>% filter(country != "World average") %>%
-            mutate(country = str_trim(country, "both"))
+              html_table(fill = TRUE, trim = TRUE) %>%
+              extract2(1) %>%
+              set_colnames(c("rank", "country", "internet_speed")) %>%
+              select(-rank) %>% filter(country != "World average") %>%
+              mutate(country = str_trim(country, "both"))
 
 ## Population ##
 population <- read_html("https://en.wikipedia.org/wiki/List_of_countries_and_dependencies_by_population") %>%
-              html_table(fill = TRUE, trim = TRUE) %>% extract2(1) %>% select(2, 3) %>%
-              set_colnames(c("country", "population")) %>%
-              mutate(population = as.numeric(str_replace_all(population, ",", "")),
-                     country = str_replace_all(country, "\\[Note.*\\]", ""))
+                html_table(fill = TRUE, trim = TRUE) %>% extract2(1) %>% select(2, 3) %>%
+                set_colnames(c("country", "population")) %>%
+                mutate(population = as.numeric(str_replace_all(population, ",", "")),
+                       country = str_replace_all(country, "\\[Note.*\\]", ""))
+
+## Gender gap ##
+gendergap <- read_html("https://en.wikipedia.org/wiki/Global_Gender_Gap_Report") %>%
+               html_table(fill = TRUE, trim = TRUE) %>% extract2(1) %>%
+               extract(-1, c(1, 11)) %>%
+               set_colnames(c("country", "gender_equality")) %>%
+               mutate(country = str_trim(country, "both"),
+                      gender_equality = as.numeric(gender_equality))
 
 ## Combining ##
 worldrankings <- full_join(smartphones, happiness) %>%
@@ -169,6 +177,7 @@ worldrankings <- full_join(smartphones, happiness) %>%
                  full_join(guns) %>%
                  full_join(internet) %>%
                  full_join(population) %>%
+                 full_join(gendergap) %>%
                  tbl_df %>%
                  select(country, subregion, region, everything()) %>%
                  filter(!str_detect(country, "World"))
