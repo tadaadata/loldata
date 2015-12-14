@@ -29,6 +29,7 @@ A table of various world rankings
 \item Gender inequality \url{https://en.wikipedia.org/wiki/Global_Gender_Gap_Report}
 \item Social Progress Index (multiple variables) \url{https://en.wikipedia.org/wiki/List_of_countries_by_Social_Progress_Index}
 \item Overall life expectancy \url{https://en.wikipedia.org/wiki/List_of_countries_by_life_expectancy}
+\item Terrorism score \url{https://en.wikipedia.org/wiki/Global_Terrorism_Index}
 }
 }
 \note{

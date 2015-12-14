@@ -186,6 +186,14 @@ lifeexpectancy <- read_html("https://en.wikipedia.org/wiki/List_of_countries_by_
                     set_colnames(c("country", "life_expectancy")) %>%
                     mutate(country = str_trim(country, "both"))
 
+## Terrorism ##
+terror <- read_html("https://en.wikipedia.org/wiki/Global_Terrorism_Index") %>%
+            html_table(fill = TRUE, trim = TRUE) %>%
+            extract2(1) %>%
+            select(-1) %>%
+            set_colnames(c("country", "terrorism_score")) %>%
+            mutate(country = str_trim(country, "both"))
+
 ## Combining ##
 worldrankings <- full_join(smartphones, happiness) %>%
                  full_join(literacy) %>%
@@ -201,6 +209,7 @@ worldrankings <- full_join(smartphones, happiness) %>%
                  full_join(gendergap) %>%
                  full_join(socialprogress) %>%
                  full_join(lifeexpectancy) %>%
+                 full_join(terror) %>%
                  tbl_df %>%
                  select(country, subregion, region, everything()) %>%
                  filter(!str_detect(country, "World"))
