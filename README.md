@@ -35,3 +35,8 @@ devtools::install_github("tadaadata/loldata")
     * `internet_speed`: [Internet connection speed (Mbps)](https://en.wikipedia.org/wiki/List_of_countries_by_Internet_connection_speeds)
     * `population`: [Population](https://en.wikipedia.org/wiki/List_of_countries_and_dependencies_by_population)
     * `gender_equality`: [Gender equality score (1 is equality) (2014)](https://en.wikipedia.org/wiki/Global_Gender_Gap_Report)
+    * [Social progress index](https://en.wikipedia.org/wiki/List_of_countries_by_Social_Progress_Index)
+        * `social_progress`: Social progress index
+        * `humand_needs`: Basic human needs
+        * `well_being`: Foundations of well-being
+        * `opprtunity`: Opportunity

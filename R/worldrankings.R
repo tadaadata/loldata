@@ -15,6 +15,7 @@
 #' \item Internet connection speed (Mbps) \url{https://en.wikipedia.org/wiki/List_of_countries_by_Internet_connection_speeds}
 #' \item Population \url{https://en.wikipedia.org/wiki/List_of_countries_and_dependencies_by_population}
 #' \item Gender inequality \url{https://en.wikipedia.org/wiki/Global_Gender_Gap_Report}
+#' \item Social Progress Index (multiple variables) \url{https://en.wikipedia.org/wiki/List_of_countries_by_Social_Progress_Index}
 #' }
 #' @docType data
 #' @keywords dataset

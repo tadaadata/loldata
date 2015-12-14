@@ -165,6 +165,19 @@ gendergap <- read_html("https://en.wikipedia.org/wiki/Global_Gender_Gap_Report")
                mutate(country = str_trim(country, "both"),
                       gender_equality = as.numeric(gender_equality))
 
+## Social progress index ##
+socialprogress <- read_html("https://en.wikipedia.org/wiki/List_of_countries_by_Social_Progress_Index") %>%
+                    html_table(fill = TRUE, trim = TRUE) %>%
+                    extract2(2) %>%
+                    select(1, 3, 5, 7, 9) %>%
+                    set_colnames(c("country", "social_progress",
+                                   "human_needs", "well_being", "opportunity")) %>%
+                    mutate(country = str_trim(country, "both"),
+                           social_progress = as.numeric(social_progress),
+                           human_needs     = as.numeric(human_needs),
+                           well_being      = as.numeric(well_being),
+                           opportunity     = as.numeric(opportunity))
+
 ## Combining ##
 worldrankings <- full_join(smartphones, happiness) %>%
                  full_join(literacy) %>%
@@ -178,6 +191,7 @@ worldrankings <- full_join(smartphones, happiness) %>%
                  full_join(internet) %>%
                  full_join(population) %>%
                  full_join(gendergap) %>%
+                 full_join(socialprogress) %>%
                  tbl_df %>%
                  select(country, subregion, region, everything()) %>%
                  filter(!str_detect(country, "World"))
