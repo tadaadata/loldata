@@ -2,6 +2,9 @@
 library(devtools)
 library(dplyr)
 library(magrittr)
+library(rvest)
+library(stringr)
+library(tRakt)
 
 #### penis ####
 # Site broke my script :(
@@ -17,8 +20,6 @@ penis <- penis %>% rename(country = Country,
 use_data(penis, overwrite = TRUE)
 
 #### Game of Thrones ####
-library(tRakt)
-
 gameofthrones <- trakt.get_all_episodes("game-of-thrones") %>%
                    select(-available_translations, epnum, zrating.season) %>%
                    tbl_df()
@@ -43,7 +44,6 @@ use_data(popularmovies, overwrite = TRUE)
 
 #### World rankings ####
 # https://en.wikipedia.org/wiki/List_of_international_rankings
-library(stringr)
 
 ## Happiness ##
 happiness <- read_html("https://en.wikipedia.org/wiki/World_Happiness_Report") %>%
@@ -142,6 +142,14 @@ guns <- read_html("https://en.wikipedia.org/wiki/List_of_countries_by_firearm-re
                  country = str_trim(country, "both"),
                  gun_deaths = as.numeric(gun_deaths))
 
+## Internet speed ##
+internet <- read_html("https://en.wikipedia.org/wiki/List_of_countries_by_Internet_connection_speeds") %>%
+            html_table(fill = TRUE, trim = TRUE) %>%
+            extract2(1) %>%
+            set_colnames(c("rank", "country", "internet_speed")) %>%
+            select(-rank) %>% filter(country != "World average") %>%
+            mutate(country = str_trim(country, "both"))
+
 ## Combining ##
 worldrankings <- full_join(smartphones, happiness) %>%
                  full_join(literacy) %>%
@@ -152,6 +160,7 @@ worldrankings <- full_join(smartphones, happiness) %>%
                  full_join(gini) %>%
                  full_join(suicide) %>%
                  full_join(guns) %>%
+                 full_join(internet) %>%
                  tbl_df %>%
                  select(country, subregion, region, everything()) %>%
                  filter(!str_detect(country, "World"))
