@@ -150,6 +150,13 @@ internet <- read_html("https://en.wikipedia.org/wiki/List_of_countries_by_Intern
             select(-rank) %>% filter(country != "World average") %>%
             mutate(country = str_trim(country, "both"))
 
+## Population ##
+population <- read_html("https://en.wikipedia.org/wiki/List_of_countries_and_dependencies_by_population") %>%
+              html_table(fill = TRUE, trim = TRUE) %>% extract2(1) %>% select(2, 3) %>%
+              set_colnames(c("country", "population")) %>%
+              mutate(population = as.numeric(str_replace_all(population, ",", "")),
+                     country = str_replace_all(country, "\\[Note.*\\]", ""))
+
 ## Combining ##
 worldrankings <- full_join(smartphones, happiness) %>%
                  full_join(literacy) %>%
@@ -161,6 +168,7 @@ worldrankings <- full_join(smartphones, happiness) %>%
                  full_join(suicide) %>%
                  full_join(guns) %>%
                  full_join(internet) %>%
+                 full_join(population) %>%
                  tbl_df %>%
                  select(country, subregion, region, everything()) %>%
                  filter(!str_detect(country, "World"))

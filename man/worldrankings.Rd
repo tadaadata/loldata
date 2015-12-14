@@ -25,6 +25,7 @@ A table of various world rankings
 \item Suicide rate \url{https://en.wikipedia.org/wiki/List_of_countries_by_suicide_rate}
 \item Gun related death rate (total) \url{https://en.wikipedia.org/wiki/List_of_countries_by_firearm-related_death_rate}
 \item Internet connection speed (Mbps) \url{https://en.wikipedia.org/wiki/List_of_countries_by_Internet_connection_speeds}
+\item Population \url{https://en.wikipedia.org/wiki/List_of_countries_and_dependencies_by_population}
 }
 }
 \note{
