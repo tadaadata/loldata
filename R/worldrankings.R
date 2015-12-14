@@ -22,7 +22,7 @@
 #' @docType data
 #' @keywords dataset
 #' @usage worldrankings
-#' @note Last updated on 2015-12-11
+#' @note Last updated on 2015-12-14
 #' @format A \code{data.frame} containing numerical and character data (country name).
 #' @source \url{https://en.wikipedia.org}.
 "worldrankings"

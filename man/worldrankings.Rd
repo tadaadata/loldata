@@ -33,7 +33,7 @@ A table of various world rankings
 }
 }
 \note{
-Last updated on 2015-12-11
+Last updated on 2015-12-14
 }
 \keyword{dataset}
 

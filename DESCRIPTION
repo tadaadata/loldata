@@ -1,6 +1,7 @@
 Package: loldata
 Title: Data for the lulz
-Version: 0.1.0
+Date: 2015-12-14
+Version: 0.2.0
 Authors@R: person('Lukas', 'Burk', email = 'lukas@quantenbrot.de', role = c('aut', 'cre'))
 Description: Miscellaneous data provided for the lulz.
 Depends:
