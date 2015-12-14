@@ -178,6 +178,14 @@ socialprogress <- read_html("https://en.wikipedia.org/wiki/List_of_countries_by_
                            well_being      = as.numeric(well_being),
                            opportunity     = as.numeric(opportunity))
 
+## Life Expectancy ##
+lifeexpectancy <- read_html("https://en.wikipedia.org/wiki/List_of_countries_by_life_expectancy") %>%
+                    html_table(fill = TRUE, trim = TRUE) %>%
+                    extract2(1) %>%
+                    select(2, 3) %>%
+                    set_colnames(c("country", "life_expectancy")) %>%
+                    mutate(country = str_trim(country, "both"))
+
 ## Combining ##
 worldrankings <- full_join(smartphones, happiness) %>%
                  full_join(literacy) %>%
@@ -192,6 +200,7 @@ worldrankings <- full_join(smartphones, happiness) %>%
                  full_join(population) %>%
                  full_join(gendergap) %>%
                  full_join(socialprogress) %>%
+                 full_join(lifeexpectancy) %>%
                  tbl_df %>%
                  select(country, subregion, region, everything()) %>%
                  filter(!str_detect(country, "World"))
