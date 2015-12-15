@@ -19,6 +19,7 @@
 #' \item Overall life expectancy \url{https://en.wikipedia.org/wiki/List_of_countries_by_life_expectancy}
 #' \item Terrorism score \url{https://en.wikipedia.org/wiki/Global_Terrorism_Index}
 #' \item Peace index (2015) \url{https://en.wikipedia.org/wiki/Global_Peace_Index}
+#' \item Satisfaction with Life Index \url{https://en.wikipedia.org/wiki/Satisfaction_with_Life_Index}
 #' }
 #' @docType data
 #' @keywords dataset
