@@ -42,3 +42,4 @@ devtools::install_github("tadaadata/loldata")
         * `opprtunity`: Opportunity
     * `life_expectancy`: [Overall life expectancy](https://en.wikipedia.org/wiki/List_of_countries_by_life_expectancy)
     * `terrorism_score`: [Terrorism Score](https://en.wikipedia.org/wiki/Global_Terrorism_Index)
+    * `peace_index`: [Peace Index (2015)](https://en.wikipedia.org/wiki/Global_Peace_Index)
