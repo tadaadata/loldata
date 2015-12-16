@@ -210,6 +210,14 @@ satisfaction <- read_html("https://en.wikipedia.org/wiki/Satisfaction_with_Life_
                   set_colnames(c("country", "satisfaction")) %>%
                   mutate(country = str_trim(country, "both"))
 
+## Web Index ##
+webindex <- read_html("https://en.wikipedia.org/wiki/Web_index") %>%
+              html_table(fill = TRUE, trim = TRUE) %>%
+              extract2(2) %>%
+              select(-1) %>%
+              set_colnames(c("country", "web_index")) %>%
+              mutate(country = str_trim(country, "both"))
+
 ## Combining ##
 worldrankings <- full_join(smartphones, happiness) %>%
                  full_join(literacy) %>%
@@ -228,6 +236,7 @@ worldrankings <- full_join(smartphones, happiness) %>%
                  full_join(terror) %>%
                  full_join(peace) %>%
                  full_join(satisfaction) %>%
+                 full_join(webindex) %>%
                  tbl_df %>%
                  select(country, subregion, region, everything()) %>%
                  filter(!str_detect(country, "World"))

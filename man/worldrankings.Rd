@@ -32,6 +32,7 @@ A table of various world rankings
 \item Terrorism score \url{https://en.wikipedia.org/wiki/Global_Terrorism_Index}
 \item Peace index (2015) \url{https://en.wikipedia.org/wiki/Global_Peace_Index}
 \item Satisfaction with Life Index \url{https://en.wikipedia.org/wiki/Satisfaction_with_Life_Index}
+\item Web Index (2014) \url{https://en.wikipedia.org/wiki/Web_index}
 }
 }
 \note{
