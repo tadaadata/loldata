@@ -1,18 +1,18 @@
 # loldata
 
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/loldata)](http://cran.r-project.org/package=loldata)
-[![Project Status: Active - The project has reached a stable, usable state and is being actively developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
+[![Project Status: Abandoned – Initial development has started, but there has not yet been a stable, usable release; the project has been abandoned and the author(s) do not intend on continuing development.](https://www.repostatus.org/badges/latest/abandoned.svg)](https://www.repostatus.org/#abandoned)
 
 Miscellaneous datasets provided for the lulz
 
 ## Installation
 
 ```
-if (!("devtools" %in% installed.packages())){
+if (!("remotes" %in% installed.packages())){
   install.packages(devtools)
 }
 
-devtools::install_github("tadaadata/loldata")
+remotes::install_github("tadaadata/loldata")
 ```
 
 ## Contained data
