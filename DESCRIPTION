@@ -1,14 +1,16 @@
 Package: loldata
-Title: Data for the lulz
-Date: 2016-02-07
-Version: 0.2.1
-Authors@R: person('Lukas', 'Burk', email = 'lukas@quantenbrot.de', role = c('aut', 'cre'))
-Description: Miscellaneous data provided for the lulz.
-Depends:
-    R (>= 3.2.2)
+Title: Miscellaneous data for the lulz
+Version: 0.3.0
+Authors@R: 
+    person(given = "Lukas",
+           family = "Burk",
+           role = c("aut", "cre"),
+           email = "lukas@tadaa-data.de",
+           comment = c(ORCID = "0000-0001-7528-3795"))
+Description: An assortment of datasets assembled for
+    demonstration / teaching purposes.
 License: MIT + file LICENSE
+Encoding: UTF-8
 LazyData: true
-RoxygenNote: 5.0.1
-Encodig: UTF-8
-URL: https://github.com/tadaadata/loldata
-BugReports: https://github.com/tadaadata/loldata/issues
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.0

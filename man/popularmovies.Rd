@@ -4,7 +4,9 @@
 \name{popularmovies}
 \alias{popularmovies}
 \title{Overview of popular movies on \code{trakt.tv}}
-\format{A \code{data.frame} containing numerical and factor data.}
+\format{
+A \code{data.frame} containing numerical and factor data.
+}
 \source{
 \url{https://trakt.tv} via the \code{tRakt} package.
 }
@@ -18,4 +20,3 @@ A table of 100 movies popular on \url{https://trakt.tv}
 Last updated on 2015-12-11
 }
 \keyword{dataset}
-

@@ -4,7 +4,8 @@
 \name{penis}
 \alias{penis}
 \title{Word Penis Size}
-\format{A 146 x 10 \code{data.frame} containing numerical and factor data with the following variables:
+\format{
+A 146 x 10 \code{data.frame} containing numerical and factor data with the following variables:
 \describe{
 \item{country}{Country of measurement}
 \item{region}{Region of measurement}
@@ -16,7 +17,8 @@
 \item{volume_flaccid}{Flaffid volume in cm^3}
 \item{method}{Method of measurement: Self reported & Measured}
 \item{n}{Sample size of measurement}
-}}
+}
+}
 \source{
 \url{http://www.everyoneweb.com/worldpenissize}
 }
@@ -27,4 +29,3 @@ penis
 Penis data across multiple regions.
 }
 \keyword{dataset}
-

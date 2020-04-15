@@ -4,7 +4,7 @@
 #' @docType data
 #' @keywords dataset
 #' @usage penis
-#' @format A 146 x 10 \code{data.frame} containing numerical and factor data with the following variables:
+#' @format A 146 x 10 `data.frame` containing numerical and factor data with the following variables:
 #' \describe{
 #' \item{country}{Country of measurement}
 #' \item{region}{Region of measurement}
@@ -17,5 +17,5 @@
 #' \item{method}{Method of measurement: Self reported & Measured}
 #' \item{n}{Sample size of measurement}
 #' }
-#' @source \url{http://www.everyoneweb.com/worldpenissize}
+#' @source <http://www.everyoneweb.com/worldpenissize>
 "penis"

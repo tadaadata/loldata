@@ -3,3 +3,4 @@
 ^\.Rproj\.user$
 playground.R
 ^inst/extdata/penis\.rds$
+^\.httr-oauth$

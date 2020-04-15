@@ -20,25 +20,22 @@ penis <- penis %>% rename(country = Country,
 use_data(penis, overwrite = TRUE)
 
 #### Game of Thrones ####
-gameofthrones <- trakt.get_all_episodes("game-of-thrones") %>%
-                   select(-available_translations, epnum, zrating.season) %>%
-                   tbl_df()
+gameofthrones <- seasons_summary("game-of-thrones", episodes = TRUE, extended = "full") %>%
+  pull(episodes) %>%
+  bind_rows()
+  select(-available_translations)
 
 use_data(gameofthrones, overwrite = TRUE)
 
 #### Popular shows ####
-popularshows <- trakt.shows.popular(100, extended = "full") %>%
-                  select(-available_translations)
-airs         <- popularshows$airs
-names(airs)  <- c("airs_day", "airs_time", "airs_timezone")
-popularshows <- popularshows %>% select(-airs) %>% bind_cols(airs) %>% tbl_df
+popularshows <- shows_popular(100, extended = "full") %>%
+  select(-available_translations)
 
 use_data(popularshows, overwrite = TRUE)
 
 #### Popular movies ####
-popularmovies <- trakt.movies.popular(100, extended = "full") %>%
-                   select(-available_translations) %>%
-                   tbl_df()
+popularmovies <- movies_popular(100, extended = "full") %>%
+  select(-available_translations)
 
 use_data(popularmovies, overwrite = TRUE)
 

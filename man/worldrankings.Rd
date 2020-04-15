@@ -4,7 +4,9 @@
 \name{worldrankings}
 \alias{worldrankings}
 \title{Some world rankings scraped straight from Wikipedia}
-\format{A \code{data.frame} containing numerical and character data (country name).}
+\format{
+A \code{data.frame} containing numerical and character data (country name).
+}
 \source{
 \url{https://en.wikipedia.org}.
 }
@@ -39,4 +41,3 @@ A table of various world rankings
 Last updated on 2015-12-14
 }
 \keyword{dataset}
-

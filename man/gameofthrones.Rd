@@ -4,7 +4,9 @@
 \name{gameofthrones}
 \alias{gameofthrones}
 \title{Game of Thrones episode data}
-\format{A \code{data.frame} containing numerical and factor data.}
+\format{
+A \code{data.frame} containing numerical and factor data.
+}
 \source{
 \url{https://trakt.tv} via the \code{tRakt} package.
 }
@@ -18,4 +20,3 @@ Episode data for Game of Thrones retrieved from \url{https://trakt.tv}
 Last updated on 2015-12-11
 }
 \keyword{dataset}
-

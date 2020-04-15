@@ -3,12 +3,7 @@
 \docType{package}
 \name{loldata}
 \alias{loldata}
-\alias{loldata-package}
 \title{Miscellaneous data for the lulz}
-\description{
-Miscellaneous data for the lulz
-}
 \author{
 Lukas Burk
 }
-
